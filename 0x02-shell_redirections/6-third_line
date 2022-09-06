@@ -1,0 +1,2 @@
+#!/bin/bash
+hea -13 iacta | tail +13
