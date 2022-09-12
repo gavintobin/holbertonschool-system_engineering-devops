@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#this scrip displays hours 1-12 , min 1-59
+hours=0
+while [ $hours -le 12 ]
+do
+	echo "hour: $hours"
+	minutes=1
+	while [ $minutes -le 59 ]
+	do
+    		echo $minutes 
+		((minutes++))
+	done
+	((hours++))
+done
