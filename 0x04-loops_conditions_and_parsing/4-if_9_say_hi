@@ -7,7 +7,7 @@ do
        if [ $i = 9 ]
        then 
         echo "Best School
-hi"
+Hi"
    
         else 
           echo "Best School"
