@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this scipt will display lines containing the bsh word to get pid of bash process
+# shellcheck disable=SC2009
+ ps -a -a -u -f | grep bash
