@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+while true; 
+do
+	cut -d ":" -f3,5 /etc/passwd | tr ":" " "
+done
+	
