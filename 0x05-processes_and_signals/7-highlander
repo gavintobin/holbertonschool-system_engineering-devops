@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#this script will write infinity and beyond indefinitely
+#with sleep 2 in between each it 
+#print i am invincible when recieving sigterm
+trap 'echo "I am invincible!!!"' 15
+while true 
+do 
+echo "To infinity and beyond" 
+sleep 2 
+done
