@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this sscript is displayin pid
+
+echo $$
