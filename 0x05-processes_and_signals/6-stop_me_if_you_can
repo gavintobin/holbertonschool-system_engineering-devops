@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#this script will kill file 4
+pgrep 7183
