@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#this script will parse apache log
+
+awk -o /dev/null --silent --head --write-out "%{http_code} $LINE\n" "$LINE"
+ < url-list.txt
