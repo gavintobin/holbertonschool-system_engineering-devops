@@ -2,9 +2,14 @@
 # install nginx on remote server
 
 apt-get update
-apt-get upgrade
 apt-get install -y nginx
-mkdir /var/www/nginx/html
-touch /var/www/nginx/html/index.html
-echo "Hello World!" > /var/www/html/index.html
-
+rm /var/www/html*.html
+touch /var/www/html/index.html
+echo "Hello World" > /var/www/html/index.html
+printf %s "server {
+    listen  80 default_server;
+    listen  [::]:80 default_server;
+    root    /var/www/html;
+    index   index.html;
+}" > /etc/nginx/sites-available/default
+service nginx restart

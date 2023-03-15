@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d -print -empty | ls -a1
+find . -type d -print -empty | ls -a1 /n
