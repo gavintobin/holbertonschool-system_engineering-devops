@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# install load bal
+
+
+apt-get update
+apt-get -y install haproxy
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+cat <<EOT > /etc/haproxy/haproxy.cfg
+defaults
+    mode    http
+frontend http-in
+    bind    *:80
+    default_backend questionTwo
+backend questionTwo
+    balance roundrobin
+    server 5571-web-01 15.188.86.122:80 check
+    server 5571-web-02 15.188.86.125:80 check
+EOT
+sudo service haproxy restart
