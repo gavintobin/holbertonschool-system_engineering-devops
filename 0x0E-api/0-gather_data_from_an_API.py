@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     # Display the TODO list progress
     print('Employee {}is done with tasks({}/{}):'
-        .format(employee_name, num_completed_tasks, total_num_tasks))
+          .format(employee_name, num_completed_tasks, total_num_tasks))
 
     # Display the completed task titles
     for task in completed_tasks:
