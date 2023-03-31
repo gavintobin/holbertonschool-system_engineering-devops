@@ -38,7 +38,7 @@ if __name__ == '__main__':
     employee_name = user_data['name']
 
     # Display the TODO list progress
-    print('Employee {}is done with tasks({}/{}):'
+    print('Employee {} is done with tasks({}/{}):'
           .format(employee_name, num_completed_tasks, total_num_tasks))
 
     # Display the completed task titles
