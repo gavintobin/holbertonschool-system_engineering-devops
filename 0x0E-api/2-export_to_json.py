@@ -3,14 +3,12 @@
 Script that exports information about an employees TODO list progress
 given an employee id to a CSV file named `USER_ID.csv`.
 """
-import csv
 import json
 import requests
 import sys
 
 
 if __name__ == "__main__":
-    num_done, num_tasks = 0, 0
     user_id = sys.argv[1]
 
     # create Response object for specific user and that user's tasks
@@ -25,19 +23,21 @@ if __name__ == "__main__":
     user_info = json.loads(user_response.text)
     todo_info = json.loads(todo_response.text)
 
-    task_list = []
-    username = user_info['username']
-    for task in todo_info:
-        task_dict = {}
-        task_dict['USER_ID'] = user_id
-        task_dict['USERNAME'] = username
-        task_dict['TASK_COMPLETED_STATUS'] = task['completed']
-        task_dict['TASK_TITLE'] = task['title']
-        task_list.append(task_dict)
+    tasks = {}
 
-    fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-    with open('./{}.csv'.format(user_id), 'w', encoding='UTF8',
+    tasks_list = []
+    for task in todo_info:
+        # create a dictionary for each task
+        task_dict = {}
+        task_dict['task'] = task['title']
+        task_dict['completed'] = task['completed']
+        task_dict['username'] = user_info['username']
+        # add task dictionary to the list of tasks
+        tasks_list.append(task_dict)
+
+    # add list of tasks to dictionary
+    tasks[user_id] = tasks_list
+
+    with open('./{}.json'.format(user_id), 'w', encoding='UTF8',
               newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames,
-                                quoting=csv.QUOTE_ALL, quotechar='"')
-        writer.writerows(task_list)
+        f.write(json.dumps(tasks))
